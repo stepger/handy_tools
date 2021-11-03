@@ -1,7 +1,6 @@
 # handy_tools
-Collection of small command line apps that applied for single task
+Collection of small command-line apps that made for a specific purpose,
+and applied for single task.
 
-### bin_pipe_throttle
-  1. It takes binary stdin via pipe, 
-  2. Throttle speed by limiting amount of data per second
-  3. Puts the binary data via stdout.
+* [bin_pipe_throttle](src_apps/bin_pipe_throttle): Initial test project to control data throughput in binary pipe
+* [pipeThrottle](src_apps/pipeThrottle): Revised expanded version of `'bin_pipe_throttle'`
