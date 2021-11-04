@@ -30,6 +30,14 @@ public:
 
     State currentState() const;
     void setState( State const &);
+    bool isReady() const;
+    bool isDone() const;
+    bool isCooldown() const;
+    bool matchState( State const & state) const;
+    void setIdle();
+    void setBusy();
+    void setReady();
+
 };
 
 #endif // BASEPIPE_H

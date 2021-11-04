@@ -9,49 +9,49 @@ managePipes(){
 
   // Cooldown countdown
 
-    if( readPipe-> currentState() == State:: Cooldown){
+    if( readPipe-> isCooldown()){
 
         cerr<< "cooldown "<< cooldownCounter<< endl;
 
-        cooldownCounter --;
+        -- cooldownCounter ;
 
         if( cooldownCounter < 0){
 
             cooldownCounter = 30;
 
-            readPipe-> setState( State:: Ready); }}
+            readPipe-> setReady(); }}
 
   // Data collected in the readPipe, write it
 
-    if( readPipe-> currentState() == State:: Ready){
+    if( readPipe-> isReady()){
 
         // Prevent read and this fork
-        readPipe-> setState( State:: Busy);
+        readPipe-> setBusy();
 
       // writePipe ready to accept data
 
-        if( writePipe-> currentState() == State:: Ready){
+        if( writePipe-> isReady()){
 
             // Protect this fork
-            writePipe-> setState( State:: Busy);
+            writePipe-> setBusy();
 
           // Get data from readPipe to writePipe
 
             writePipe-> putData( readPipe-> takeData());
 
-            readPipe-> setState( State:: Idle); } else
+            readPipe-> setIdle(); } else
 
           // Check again if writePipe ready for data
 
-            readPipe-> setState( State:: Ready); }
+            readPipe-> setReady(); }
 
   // Last data Write
 
-    if( readPipe-> currentState() == State:: Done){
+    if( readPipe-> isDone()){
 
-        if( writePipe-> currentState() == State:: Ready){
+        if( writePipe-> isReady()){
 
-            writePipe-> setState( State:: Busy);
+            writePipe-> setBusy();
 
           // Get data from readPipe to writePipe
 
