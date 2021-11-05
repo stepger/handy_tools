@@ -38,7 +38,7 @@ bool BasePipe:: isCooldown() const{
 
 bool BasePipe:: matchState( State const & state) const{
 
-    return currentState() == state; return false; }
+    return currentState() == state; }
 
 void BasePipe:: setIdle(){
 
